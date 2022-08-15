@@ -1,0 +1,34 @@
+version: "3.8"
+
+services:
+  app:
+    build: ./docker
+    environment:
+      AUTORELOAD_PROGRAMS: "swoole"
+      AUTORELOAD_ANY_FILES: 1
+    ports:
+      - 80:9501
+    volumes:
+      - .:/var/www/slim-app
+      - ./docker/etc/swoole.conf:/etc/supervisor/service.d/swoole.conf
+      - ./docker/etc/php.ini:/usr/local/etc/php/php.ini
+  mysql:
+    image: mariadb:10.4
+    restart: always
+    environment:
+      - MYSQL_DATABASE=Example
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+    command: --init-file /data/application/init.sql
+    ports:
+      - "3306:3306"
+    volumes:
+      - "./docker/data/db/mysql:/var/lib/mysql"
+      - ./init.sql:/data/application/init.sql
+  # # AS YOU NEED
+  # redis:
+  #   image: redis:6.0
+  #   restart: always
+  #   ports:
+  #     - "6379:6379"

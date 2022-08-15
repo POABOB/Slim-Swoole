@@ -1,0 +1,57 @@
+{
+    "name": "poabob/slim-swoole",
+    "type": "project",
+    "description": "A Restful PHP Microservice Framework!",
+    "homepage": "https://github.com/POABOB/Slim-Swoole",
+    "authors": [
+        {
+            "name": "POABOB",
+            "email": "zxc752166@gmail.com"
+        }
+    ],
+    "keywords": [
+        "slim-4-framework",
+        "slim-4-framework",
+        "slim",
+        "slim4",
+        "slim-4",
+        "nginx",
+        "microservice",
+        "restful"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": ">=8.0",
+        "catfan/medoo": "^2.1",
+        "imefisto/psr-swoole-native": "^1.1",
+        "lcobucci/jwt": "^4.0",
+        "php-di/php-di": "^6.4",
+        "selective/basepath": "^2.1",
+        "slim/http": "^1.0",
+        "slim/psr7": "^1.0",
+        "slim/slim": "^4.10",
+        "symfony/dotenv": "^6.0",
+        "zircote/swagger-php": "^4.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src"
+        }
+    },
+    "config": {
+        "process-timeout": 0,
+        "sort-packages": true
+    },
+    "require-dev": {
+        "codeception/codeception": "^4.0",
+        "codeception/module-asserts": "^2.0.0",
+        "codeception/module-phpbrowser": "^2.0.0",
+        "codeception/module-rest": "^2.0.0",
+        "docler-labs/codeception-slim-module": "^3.0"
+    },
+    "scripts": {
+        "start": "docker-compose up -d",
+        "test": "php vendor/bin/codecept run --steps",
+        "test-c": "php vendor/bin/codecept run --coverage --coverage-xml --coverage-html"
+    }
+}
